@@ -1,0 +1,71 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url "https://repo.spring.io/snapshot" }
+        maven { url "https://repo.spring.io/milestone" }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.0.M3")
+        classpath "net.saliman:gradle-cobertura-plugin:2.3.2"
+    }
+}
+
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+apply plugin: 'checkstyle'
+apply plugin: 'cobertura'
+
+jar {
+    baseName = 'TimesheetOptimization'
+    version = '1.0.0'
+}
+
+def compatibility = {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}
+
+repositories {
+    mavenCentral()
+    maven { url "https://repo.spring.io/snapshot" }
+    maven { url "https://repo.spring.io/milestone" }
+}
+
+dependencies {
+//    checkstyle 'com.puppycrawl.tools:checkstyle:6.8'
+    cobertura 'com.mapvine:gradle-cobertura-plugin:1.0'
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("com.h2database:h2")
+    compile("org.quartz-scheduler:quartz:2.2.2")
+    compile("org.springframework.boot:spring-boot-starter-jetty")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compile "com.google.guava:guava:19.0"
+    compile "ma.glasnost.orika:orika-core:1.4.2"
+    compile "org.apache.tomcat.embed:tomcat-embed-jasper"
+    compile "javax.servlet:jstl"
+}
+
+checkstyle {
+    configFile = file('config/checkstyle/checkstyle.xml')
+}
+
+cobertura {
+    coverageFormats = ['html']
+    coverageEncoding = 'UTF-8'
+    coverageExcludes = ['.*Application.*', '.*domain.*', '.*model.*']
+    coverageIgnoreMethodAnnotations = []
+    coverageCheckBranchRate = 80
+    coverageCheckLineRate = 80
+    coverageCheckPackageBranchRate = 80
+    coverageCheckPackageLineRate = 80
+    coverageCheckTotalBranchRate = 80
+    coverageCheckTotalLineRate = 80
+    coverageIgnoreTrivial = true
+    coverageCheckHaltOnFailure = true
+}
+
+defaultTasks 'clean', 'cobertura', 'coberturaCheck', 'build'
