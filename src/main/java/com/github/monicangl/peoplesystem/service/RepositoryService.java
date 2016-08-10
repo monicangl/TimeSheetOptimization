@@ -1,5 +1,8 @@
 package com.github.monicangl.peoplesystem.service;
 
+import static java.util.stream.Collectors.toList;
+import static com.google.common.collect.Lists.newArrayList;
+
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -8,9 +11,6 @@ import com.github.monicangl.peoplesystem.domain.WorkingOffice;
 import com.github.monicangl.peoplesystem.domain.jigsaw.People;
 import com.github.monicangl.peoplesystem.repository.PeopleRepository;
 import com.github.monicangl.peoplesystem.service.mapper.PeopleMapper;
-
-import static com.google.common.collect.Lists.newArrayList;
-import static java.util.stream.Collectors.toList;
 
 @Service
 public class RepositoryService

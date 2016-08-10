@@ -1,5 +1,7 @@
 package com.github.monicangl.peoplesystem.service;
 
+import static com.google.common.collect.Lists.newArrayList;
+
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -12,8 +14,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import com.github.monicangl.peoplesystem.domain.WorkingOffice;
 import com.github.monicangl.peoplesystem.domain.jigsaw.People;
-
-import static com.google.common.collect.Lists.newArrayList;
 
 @Service
 public class JigsawService
@@ -51,7 +51,8 @@ public class JigsawService
         ResponseEntity<People[]> result;
         Integer page = 1;
         do {
-            result = restTemplate.exchange(String.format(url, workingOffice.getValue(), page.toString())
+            result = restTemplate.exchange(
+                    String.format(url, workingOffice.getValue(), page.toString())
                     , HttpMethod.GET, httpEntity, People[].class);
             people.addAll(newArrayList(result.getBody()));
             ++page;

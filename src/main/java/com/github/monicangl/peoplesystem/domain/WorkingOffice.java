@@ -2,7 +2,12 @@ package com.github.monicangl.peoplesystem.domain;
 
 public enum WorkingOffice
 {
-    CHENGDU("Chengdu"), BEIJING("Beijing"), XIAN("Xi'an"), WUHAN("Wuhan"), SHANGHAI("Shanghai"), SHENZHEN("Shenzhen");
+    CHENGDU("Chengdu"),
+    BEIJING("Beijing"),
+    XIAN("Xi'an"),
+    WUHAN("Wuhan"),
+    SHANGHAI("Shanghai"),
+    SHENZHEN("Shenzhen");
 
     private String value;
 

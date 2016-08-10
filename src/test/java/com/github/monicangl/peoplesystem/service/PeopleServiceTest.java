@@ -1,5 +1,10 @@
 package com.github.monicangl.peoplesystem.service;
 
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.when;
+import static com.google.common.collect.Lists.newArrayList;
+
 import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,11 +16,6 @@ import com.github.monicangl.peoplesystem.domain.PeopleBasicInfo;
 import com.github.monicangl.peoplesystem.model.People;
 import com.github.monicangl.peoplesystem.repository.PeopleRepository;
 import com.github.monicangl.peoplesystem.service.exception.RequestParameterValueUnsupportedException;
-
-import static com.google.common.collect.Lists.newArrayList;
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.when;
 
 public class PeopleServiceTest
 {
