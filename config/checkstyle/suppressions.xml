@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE suppressions PUBLIC
+        "-//Puppy Crawl//DTD Suppressions 1.1//EN"
+        "suppressions_1_1.dtd">
+
+<suppressions>
+    <suppress checks="HideUtilityClassConstructor" files="Application.java"/>
+    <suppress checks="FileLength" files="People.java"/>
+</suppressions>
